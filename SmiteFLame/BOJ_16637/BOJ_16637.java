@@ -12,7 +12,6 @@ public class BOJ_16637 {
     static char[] operator, cloneOper;
     static BufferedReader io = new BufferedReader(new InputStreamReader(System.in));
 
-
     private static void init() throws IOException {
         N = Integer.parseInt(io.readLine());
         S = io.readLine();
@@ -20,8 +19,10 @@ public class BOJ_16637 {
         operator = new char[N / 2];
 
         for (int i = 0; i < N; i++) {
-            if (i % 2 == 0) number[i / 2] = S.charAt(i) - '0';
-            else operator[i / 2] = S.charAt(i);
+            if (i % 2 == 0)
+                number[i / 2] = S.charAt(i) - '0';
+            else
+                operator[i / 2] = S.charAt(i);
         }
     }
 
@@ -60,7 +61,7 @@ public class BOJ_16637 {
         for (int i = 0, end = N / 2; i < end; i++) {
             if ((subset & 1 << i) != 1 << i) {
                 leftNum = i;
-                while(leftNum > 0 && cloneOper[leftNum - 1] == 'P'){
+                while (leftNum > 0 && cloneOper[leftNum - 1] == 'P') {
                     leftNum--;
                 }
                 cloneNum[leftNum] = opeatorResult(cloneNum[leftNum], cloneNum[i + 1], cloneOper[i]);
@@ -68,7 +69,7 @@ public class BOJ_16637 {
 
             }
         }
-        max = Math.max(max,cloneNum[0]);
+        max = Math.max(max, cloneNum[0]);
     }
 
     private static void print() {
